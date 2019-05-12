@@ -30,6 +30,16 @@
         "vue/html-closing-bracket-newline": "error",
         "vue/html-closing-bracket-spacing": "error",
         "vue/prop-name-casing": "error",
-        "vue/max-attributes-per-line": "off"
-    }
+        "vue/max-attributes-per-line": "off",
+        "vue/script-indent": ["error", 2, {
+            "baseIndent": 1,
+            "switchCase": 1
+        }]
+    },
+    "overrides": [{
+        "files": ["*.vue"],
+        "rules": {
+            "indent": "off"
+        }
+    }]
 }

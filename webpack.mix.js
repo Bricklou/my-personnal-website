@@ -19,7 +19,6 @@ mix.config.webpackConfig.output = {
 
 mix.js("resources/js/app.js", "public/js")
   .sass("resources/sass/app.scss", "public/css")
-  .sourceMaps()
   .stylelint({
     configFile: ".stylelintrc.json",
     context: "./resources",
@@ -36,7 +35,7 @@ mix.js("resources/js/app.js", "public/js")
     module: {
       rules: [{
         enforce: "pre",
-        test: /\.js$/,
+        test: /\.(js|vue)$/,
         exclude: /node_modules/,
         loader: "eslint-loader",
         options: {
@@ -46,3 +45,10 @@ mix.js("resources/js/app.js", "public/js")
       }]
     }
   });
+
+/**
+ * Generate source maps only if we are in development mode. Else we ignore this action.
+ */
+if (!mix.inProduction) {
+  mix.sourceMaps();
+}
