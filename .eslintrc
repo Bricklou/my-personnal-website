@@ -1,45 +1,50 @@
 {
-    "extends": [
-        "eslint:recommended",
-        "plugin:vue/recommended"
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/recommended"
+  ],
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": 0,
+    "indent": [
+      "error",
+      2
     ],
-    "rules": {
-        "no-console": 0,
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
 
-        "no-empty": 0,
-        "no-unused-vars": 2,
-        "no-undef": 0,
-        "no-mixed-spaces-and-tabs": 2,
+    "no-empty": 0,
+    "no-unused-vars": 2,
+    "no-undef": 0,
+    "no-mixed-spaces-and-tabs": 2,
 
-        "vue/html-closing-bracket-newline": "error",
-        "vue/html-closing-bracket-spacing": "error",
-        "vue/prop-name-casing": "error",
-        "vue/max-attributes-per-line": "off",
-        "vue/script-indent": ["error", 2, {
-            "baseIndent": 1,
-            "switchCase": 1
-        }]
-    },
-    "overrides": [{
-        "files": ["*.vue"],
-        "rules": {
-            "indent": "off"
-        }
+    "vue/html-closing-bracket-newline": "error",
+    "vue/html-closing-bracket-spacing": "error",
+    "vue/prop-name-casing": "error",
+    "vue/max-attributes-per-line": "off",
+    "vue/script-indent": ["error", 2, {
+      "baseIndent": 1,
+      "switchCase": 1
     }]
+  },
+  "overrides": [{
+    "files": ["*.vue"],
+    "rules": {
+      "indent": "off"
+    }
+  }]
 }

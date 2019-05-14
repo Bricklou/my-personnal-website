@@ -17,10 +17,11 @@ mix.config.webpackConfig.output = {
   publicPath: "/"
 };
 
-mix.js("resources/js/app.js", "public/js")
+mix
+  .js("resources/js/app.js", "public/js")
   .sass("resources/sass/app.scss", "public/css")
   .stylelint({
-    configFile: ".stylelintrc.json",
+    configFile: ".stylelintrc",
     context: "./resources",
     failOnError: false,
     files: ["**/*.scss"],
@@ -42,7 +43,17 @@ mix.js("resources/js/app.js", "public/js")
           fix: true,
           cache: true
         }
-      }]
+      },
+      {
+        enforce: "pre",
+        test: /\.(s)css$/,
+        loader: "stylelint-loader",
+        options: {
+          fix: true,
+          cache: true
+        }
+      }
+      ]
     }
   });
 

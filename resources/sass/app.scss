@@ -1,2 +1,22 @@
-// Variable
+//Set encoding
+@charset "utf-8";
+// Variables
 @import 'variables';
+// Bulma and Fontawesome
+@import '~bulma/bulma';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+html,
+body {
+  height: 100vh;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
