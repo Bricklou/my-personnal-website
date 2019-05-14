@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/', 'SpaController@index')->where('any', '^(?!api\/)[\/\w\.-]*');
+Route::get('/{any?}', 'SpaController@index')->where('any', '^(?!api\/)[\/\w\.-]*');
