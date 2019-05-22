@@ -1,14 +1,15 @@
 //Set encoding
 @charset "utf-8";
 // Variables
-@import 'variables';
+@import "variables";
 // Bulma and Fontawesome
-@import '~bulma/bulma';
-@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import "~bulma/bulma";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 html,
 body {
   height: 100vh;
+  overflow: auto;
 }
 
 .fade-enter-active,

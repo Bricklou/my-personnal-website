@@ -25,6 +25,50 @@
         <router-link :class="textClass" class="navbar-item" to="/">
           Accueil
         </router-link>
+
+        <router-link
+          v-if="!$auth.check()"
+          :class="textClass"
+          class="navbar-item"
+          to="/register"
+        >
+          Inscription
+        </router-link>
+        <router-link
+          v-if="!$auth.check()"
+          :class="textClass"
+          class="navbar-item"
+          to="/login"
+        >
+          Connexion
+        </router-link>
+
+        <router-link
+          v-if="$auth.check([1, 2])"
+          :class="textClass"
+          class="navbar-item"
+          to="/dashboard"
+        >
+          Mon compte
+        </router-link>
+
+        <router-link
+          v-if="$auth.check(2)"
+          :class="textClass"
+          class="navbar-item"
+          to="/admin"
+        >
+          Administration
+        </router-link>
+
+        <a
+          v-if="$auth.check([1, 2])"
+          :class="textClass"
+          class="navbar-item"
+          @click.prevent="$auth.logout()"
+        >
+          Déconnexion
+        </a>
       </div>
     </div>
   </nav>
@@ -36,7 +80,8 @@
     props: {
       textClass: {
         type: String,
-        default: () => ""
+        default: "",
+        required: false
       }
     },
     data() {
@@ -48,7 +93,7 @@
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/bulma';
+@import "~bulma/bulma";
 
 #navbarMobile {
   a:hover {

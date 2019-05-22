@@ -18,8 +18,11 @@
             "except": ["value"]
         }],
         "max-empty-lines": 2,
+        "max-nesting-depth": 10,
         "unit-whitelist": ["px", "vh", "vw", "em", "rem", "%", "s"],
         "number-leading-zero": null,
-        "selector-max-id": 10
+        "selector-max-id": 10,
+        "selector-max-compound-selectors": 10,
+        "string-quotes": "double"
     }
 }

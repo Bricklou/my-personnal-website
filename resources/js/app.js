@@ -4,9 +4,22 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import "./bootstrap";
+import "es6-promise/auto";
+import axios from "axios";
 import Vue from "vue";
+import VueAuth from "@websanova/vue-auth";
+import VueAxios from "vue-axios";
 import router from "./router";
+import auth from "./utils/auth";
 import App from "./App.vue";
+
+/**
+ * Set Vue Authentication
+ */
+
+Vue.use(VueAxios, axios);
+axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`;
+Vue.use(VueAuth, auth);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

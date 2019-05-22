@@ -1,17 +1,15 @@
 <template>
-  <div id="home">
+  <div id="adminDashboard">
     <h1 class="title is-1">
-      Accueil
+      Administration
     </h1>
-    <p>
-      Bienvenu sur mon site.
-    </p>
+    <p>Bienvenu sur le panel admin.</p>
   </div>
 </template>
 
 <script>
   export default {
-    name: "Home"
+    name: "AdminDashboard"
   };
 </script>
 

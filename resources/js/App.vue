@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition mode="out-in" name="fade">
-      <div id="page">
+      <div v-if="$auth.ready() && ready" id="page">
         <section class="hero">
           <div class="hero-head" :style="{'background-image': 'url(' + imgUrl + ')'}">
             <nav-bar class="is-transparent" text-class="has-text-white" />
@@ -22,15 +22,17 @@
           />
         </transition>
       </div>
+      <loading v-else id="loading" size="big" text="Bricklou's website" />
     </transition>
   </div>
 </template>
 
 <script>
   import NavBar from "./components/NavBar.vue";
+  import Loading from "./components/Loading.vue";
   export default {
     name: "App",
-    components: { NavBar },
+    components: { NavBar, Loading },
     data() {
       return {
         showDynNavBar: false,
@@ -52,26 +54,30 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../sass/app';
-
-.hero-head {
-  background: grey no-repeat fixed center/cover;
-  height: 500px;
-}
-
-#loading {
-  bottom: 25%;
-  height: 50%;
-  margin: auto;
-  position: relative;
-  top: 25%;
-}
+@import "../sass/app";
 
 #app {
-  height: 200vh;
+  height: 100vh;
 
-  .hero-body .container {
-    min-height: 50vh;
+  #page {
+    height: 200vh;
+
+    .hero-head {
+      background: grey no-repeat fixed center/cover;
+      height: 500px;
+    }
+
+    .hero-body .container {
+      min-height: 50vh;
+    }
+  }
+
+  #loading {
+    bottom: 25%;
+    height: 50%;
+    margin: auto;
+    position: relative;
+    top: 25%;
   }
 }
 </style>

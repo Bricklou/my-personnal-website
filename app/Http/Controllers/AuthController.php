@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -51,19 +53,11 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'login'    => 'required',
+            'email'    => 'required',
             'password' => 'required',
         ]);
 
-        $login_type = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL )
-            ? 'email'
-            : 'username';
-
-        $request->merge([
-            $login_type => $request->input('login')
-        ]);
-
-        $credentials = $request->only($login_type, 'password');
+        $credentials = $request->only('email', 'password');
         if ($token = $this->guard()->attempt($credentials)) {
             return response()->json(['status' => 'success'], 200)->header('Authorization', $token);
         }
