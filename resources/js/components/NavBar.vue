@@ -19,11 +19,15 @@
       </a>
     </div>
 
-    <div id="navbarMobile" :class="{'is-active': showNav}" class="navbar-menu is-transparent">
+    <div id="navbarMobile" :class="{'is-active': showNav}" class="navbar-menu">
       <div class="navbar-start" />
       <div class="navbar-end">
         <router-link :class="textClass" class="navbar-item" to="/">
           Accueil
+        </router-link>
+
+        <router-link :class="textClass" class="navbar-item" to="/about-me">
+          A propos
         </router-link>
 
         <router-link
@@ -66,9 +70,7 @@
           :class="textClass"
           class="navbar-item"
           @click.prevent="$auth.logout()"
-        >
-          Déconnexion
-        </a>
+        >Déconnexion</a>
       </div>
     </div>
   </nav>
@@ -94,6 +96,16 @@
 
 <style lang="scss" scoped>
 @import "~bulma/bulma";
+
+.navbar {
+  &.is-transparent {
+    background-color: transparent !important;
+  }
+
+  &.box {
+    border-radius: 0 0 6px 6px !important;
+  }
+}
 
 #navbarMobile {
   a:hover {

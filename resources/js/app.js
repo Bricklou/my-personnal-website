@@ -9,9 +9,16 @@ import axios from "axios";
 import Vue from "vue";
 import VueAuth from "@websanova/vue-auth";
 import VueAxios from "vue-axios";
+import VueShortkey from "vue-shortkey";
 import router from "./router";
 import auth from "./utils/auth";
+import "./utils/markdownConverter";
 import App from "./App.vue";
+
+/**
+ * Adding shortcut support
+ */
+Vue.use(VueShortkey);
 
 /**
  * Set Vue Authentication

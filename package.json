@@ -41,9 +41,16 @@
     "@fortawesome/fontawesome-free": "^5.8.2",
     "@websanova/vue-auth": "^2.21.14-beta",
     "bulma": "^0.7.4",
+    "bulma-extensions": "^6.2.7",
+    "codemirror": "^5.47.0",
+    "emoji-js": "^3.4.1",
     "es6-promise": "^4.2.6",
+    "showdown": "^1.9.0",
+    "showdown-xss-filter": "^0.2.0",
+    "twemoji": "^12.0.1",
     "vue-axios": "^2.1.4",
-    "vue-router": "^3.0.6"
+    "vue-router": "^3.0.6",
+    "vue-shortkey": "^3.1.7"
   },
   "pre-commit": [
     "lint",

@@ -40,11 +40,9 @@
           </div>
         </div>
 
-        <div class="field is-grouped is-grouped-centered">
-          <label class="checkbox">
-            <input v-model="remember" type="checkbox">
-            Se souvenir de moi
-          </label>
+        <div class="field  is-grouped is-grouped-centered">
+          <input id="remember" v-model="remember" class="is-checkradio" type="checkbox" checked="checked">
+          <label for="remember">Se souvenir de moi</label>
         </div>
 
         <div class="field is-grouped is-grouped-centered">

@@ -1,8 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/about-me.bundle.js": "/js/about-me.bundle.js",
     "/js/admin.bundle.js": "/js/admin.bundle.js",
     "/js/home.bundle.js": "/js/home.bundle.js",
     "/js/login.bundle.js": "/js/login.bundle.js",
-    "/js/register.bundle.js": "/js/register.bundle.js"
+    "/js/register.bundle.js": "/js/register.bundle.js",
+    "/js/vendors~about-me.bundle.js": "/js/vendors~about-me.bundle.js"
 }

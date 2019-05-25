@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class CheckIsAdmin
 {
@@ -15,10 +16,9 @@ class CheckIsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role === 2) {
+        if (Auth::user()->role === 2) {
             return $next($request);
-        }
-        else {
+        } else {
             return response()->json(['error' => 'Unauthorized'], 403);
         }
     }

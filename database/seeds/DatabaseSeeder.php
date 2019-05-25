@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\GlobalData;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +20,11 @@ class DatabaseSeeder extends Seeder
             'lastName' => env('DEFAULT_ADMIN_LASTNAME', ''),
             'password' => Hash::make(env('DEFAULT_ADMIN_PASSWORD', 'admin')),
             'role' => 2
+        ]);
+
+        GlobalData::create([
+            'key' => 'about-me',
+            'value' => ''
         ]);
     }
 }

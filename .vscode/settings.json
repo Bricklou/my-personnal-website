@@ -2,5 +2,6 @@
     "discord.enabled": true,
     "eslint.options": {
         "configFile": ".eslintrc"
-    }
+    },
+    "editor.tabSize": 2
 }

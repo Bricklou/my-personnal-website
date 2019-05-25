@@ -10,7 +10,7 @@ const router = new VueRouter({
     path: "/",
     name: "home",
     component: () =>
-        import ( /* webpackChunkName: "home" */ "./views/Home.vue"),
+                import ( /* webpackChunkName: "home" */ "./views/Home.vue"),
     meta: {
       auth: undefined
     }
@@ -19,7 +19,7 @@ const router = new VueRouter({
     path: "/register",
     name: "register",
     component: () =>
-        import ( /* webpackChunkName: "register" */ "./views/auth/Register.vue"),
+                import ( /* webpackChunkName: "register" */ "./views/auth/Register.vue"),
     meta: {
       auth: false
     }
@@ -28,9 +28,18 @@ const router = new VueRouter({
     path: "/login",
     name: "login",
     component: () =>
-        import ( /* webpackChunkName: "login" */ "./views/auth/Login.vue"),
+                import ( /* webpackChunkName: "login" */ "./views/auth/Login.vue"),
     meta: {
       auth: false
+    }
+  },
+  {
+    path: "/about-me",
+    name: "about-me",
+    component: () =>
+                import ( /* webpackChunkName: "about-me" */ "./views/AboutMe.vue"),
+    meta: {
+      auth: undefined
     }
   },
   // USER ROUTES
@@ -38,7 +47,7 @@ const router = new VueRouter({
     path: "/dashboard",
     name: "dashboard",
     component: () =>
-        import ( /* webpaclChunkName: "dashboard" */ "./views/user/Dashboard.vue"),
+                import ( /* webpaclChunkName: "dashboard" */ "./views/user/Dashboard.vue"),
     meta: {
       auth: true
     }
@@ -48,9 +57,15 @@ const router = new VueRouter({
     path: "/admin",
     name: "admin.dashboard",
     component: () =>
-        import ( /* webpackChunkName: "admin" */ "./views/admin/Dashboard.vue"),
+                import ( /* webpackChunkName: "admin" */ "./views/admin/Dashboard.vue"),
     meta: {
-      auth: { roles: 2, redirect: { name: "login" }, forbiddenRedirect: "/403" }
+      auth: {
+        roles: 2,
+        redirect: {
+          name: "login"
+        },
+        forbiddenRedirect: "/403"
+      }
     }
   }
   ]

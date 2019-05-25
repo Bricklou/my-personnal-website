@@ -1,0 +1,85 @@
+/* stylelint-disable selector-class-pattern, selector-no-qualifying-type  */
+
+.CodeMirror {
+  pre.CodeMirror-line {
+    margin-bottom: 0;
+  }
+
+  .cm-header {
+    color: black;
+    margin-bottom: 0;
+
+    &.cm-header-1 {
+      color: inherit;
+      font-size: 2.8rem;
+    }
+
+    &.cm-header-2 {
+      color: inherit;
+      font-size: 2.5rem;
+    }
+
+    &.cm-header-3 {
+      color: inherit;
+      font-size: 2rem;
+    }
+
+    &.cm-header-4 {
+      color: inherit;
+      font-size: 1.5rem;
+    }
+
+    &.cm-header-5 {
+      color: inherit;
+      font-size: 1.25rem;
+    }
+
+    &.cm-header-6 {
+      color: inherit;
+      font-size: 1rem;
+    }
+  }
+}
+
+
+/* stylelint-enable */
+
+.mdeditor--editor {
+  border: #dbdbdb 1px solid;
+  border-radius: 0 6px 6px;
+}
+
+.mdeditor--toolbar {
+  .field.has-addons {
+    .control .button {
+      border-bottom: 0;
+    }
+
+    .control:first-child:not(:only-child) .button {
+      border-bottom-left-radius: 0;
+    }
+
+    .control:last-child:not(:only-child) .button {
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+.mdeditor--preview {
+  border: #dbdbdb 1px solid;
+  border-radius: 0 6px 6px;
+  box-sizing: content-box;
+  height: 300px !important;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 5px;
+
+  .emoji {
+    height: 1em;
+    width: 1em;
+  }
+
+  p {
+    margin-bottom: 0 !important;
+  }
+}

@@ -2,10 +2,14 @@
   <div id="app">
     <transition mode="out-in" name="fade">
       <div v-if="$auth.ready() && ready" id="page">
+        <nav-bar
+          id="navbar"
+          class="is-fixed-top box is-paddingless"
+          :class="showDynNav ? 'is-white' : 'is-transparent'"
+          :text-class="showDynNav ? '' : 'has-text-white'"
+        />
         <section class="hero">
-          <div class="hero-head" :style="{'background-image': 'url(' + imgUrl + ')'}">
-            <nav-bar class="is-transparent" text-class="has-text-white" />
-          </div>
+          <div class="hero-head" :style="{'background-image': 'url(' + imgUrl + ')'}" />
           <div class="hero-body">
             <div class="container">
               <transition mode="out-in" name="fade">
@@ -14,13 +18,7 @@
             </div>
           </div>
         </section>
-        <transition mode="out-in" name="fade">
-          <nav-bar
-            v-if="showDynNavBar"
-            id="dynamic-navbar"
-            class="is-white is-fixed-top box is-paddingless"
-          />
-        </transition>
+        <transition mode="out-in" name="fade" />
       </div>
       <loading v-else id="loading" size="big" text="Bricklou's website" />
     </transition>
@@ -35,9 +33,9 @@
     components: { NavBar, Loading },
     data() {
       return {
-        showDynNavBar: false,
         ready: false,
-        imgUrl: "/images/banner.jpg"
+        imgUrl: "/images/banner.jpg",
+        showDynNav: false
       };
     },
     mounted() {
@@ -46,9 +44,13 @@
           this.ready = true;
         }
       };
+
       document.addEventListener("scroll", () => {
-        this.showDynNavBar = window.scrollY >= 75;
+        this.showDynNav = window.scrollY > 60;
       });
+    },
+    destroyed() {
+      document.removeEventListener("scroll");
     }
   };
 </script>
@@ -60,8 +62,6 @@
   height: 100vh;
 
   #page {
-    height: 200vh;
-
     .hero-head {
       background: grey no-repeat fixed center/cover;
       height: 500px;
