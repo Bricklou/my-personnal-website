@@ -18,7 +18,7 @@
     <transition mode="out-in" name="fade">
       <div v-if="!edit">
         <!-- eslint-disable vue/no-v-html -->
-        <div v-if="data" id="page" v-html="page" />
+        <div v-if="data" id="page" class="content" v-html="page" />
         <!--eslint-enable-->
         <div v-else-if="data === ''">
           <p>Il n'y aucune donnée à afficher.</p>
