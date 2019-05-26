@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('users/{id}', 'UserController@show')->middleware('isAdminOrSelf');
 
     // Globals
-    Route::get('globals/get/{key}', 'GlobalDataController@index');
     Route::post('globals/set/{key}', 'GlobalDataController@update')->middleware('isAdmin');
 });
+
+// Globals
+Route::get('globals/get/{key}', 'GlobalDataController@index');
