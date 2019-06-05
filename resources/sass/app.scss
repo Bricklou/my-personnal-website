@@ -1,10 +1,9 @@
 //Set encoding
 @charset "utf-8";
-// Variables
-@import "variables";
 // Bulma and Fontawesome
 @import "~bulma/bulma";
-@import "~bulma-extensions/dist/css/bulma-extensions.min.css";
+@import "~bulma-checkradio/dist/css/bulma-checkradio.min.css";
+@import "~bulma-calendar/dist/css/bulma-calendar.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 html,
@@ -27,4 +26,17 @@ body {
   position: relative;
   top: 4px;
   width: 1.1em;
+}
+
+.vue-notification-handler {
+  margin: 5px 5px 0 0;
+  top: 64px !important;
+
+  .notification {
+    margin-top: 5px;
+  }
+}
+
+#project-render .image {
+  padding: 20px !important;
 }

@@ -105,7 +105,7 @@
           </div>
         </div>
         <div class="content">
-          <div v-show="!preview" class="mdeditor--editor">
+          <div v-show="!preview" class="mdeditor--editor" :class="errorClass">
             <textarea v-model="content" @input="updateSelf($event.target.value)" />
           </div>
           <!-- eslint-disable vue/no-v-html -->
@@ -133,6 +133,11 @@
     props: {
       content: {
         type: String,
+        default: "",
+        required: false
+      },
+      errorClass: {
+        type: [String, Object],
         default: "",
         required: false
       }
@@ -167,6 +172,10 @@
       this.editor.on("change", editor => {
         this.updateSelf(editor.getDoc().getValue());
       });
+
+      this.$root.$on("mdeditor-action", (event) => {
+        this[`${event.action}`]({}, event.content);
+      });
     },
 
     methods: {
@@ -177,72 +186,76 @@
         console.log(value);
         this.editor.getDoc().setValue(value);
       },
-      setBold() {
+      action(event) {
+        console.log(event);
+      },
+      setBold(event, content) {
+        console.log(content);
         if (this.preview) return;
         this.editor
           .getDoc()
-          .replaceSelection("**" + this.editor.getDoc().getSelection() + "**");
+          .replaceSelection("**" + (content ? content : this.editor.getDoc().getSelection()) + "**");
         this.editor.focus();
         const cursorPos = this.editor.getCursor();
         this.editor.setCursor({ line: cursorPos.line, ch: cursorPos.ch - 2 });
       },
-      setItalic() {
+      setItalic(event, content) {
         if (this.preview) return;
         this.editor
           .getDoc()
-          .replaceSelection("*" + this.editor.getDoc().getSelection() + "*");
+          .replaceSelection("*" + (content ? content : this.editor.getDoc().getSelection()) + "*");
         this.editor.focus();
         const cursorPos = this.editor.getCursor();
         this.editor.setCursor({ line: cursorPos.line, ch: cursorPos.ch - 1 });
       },
-      setCode() {
+      setCode(event, content) {
         if (this.preview) return;
         this.editor
           .getDoc()
           .replaceSelection(
-            "```\n" + this.editor.getDoc().getSelection() + "\n```"
+            "```\n" + (content ? content : this.editor.getDoc().getSelection()) + "\n```"
           );
         this.editor.focus();
         const cursorPos = this.editor.getCursor();
         this.editor.setCursor({ line: cursorPos.line - 1, ch: cursorPos.ch });
       },
-      setLink() {
+      setLink(event, content) {
         if (this.preview) return;
         this.editor
           .getDoc()
-          .replaceSelection("[" + this.editor.getDoc().getSelection() + "]()");
+          .replaceSelection("[" + (content ? content : this.editor.getDoc().getSelection()) + "]()");
         this.editor.focus();
         const cursorPos = this.editor.getCursor();
         this.editor.setCursor({ line: cursorPos.line, ch: cursorPos.ch - 3 });
       },
-      setStrikethrough() {
+      setStrikethrough(event, content) {
         if (this.preview) return;
         this.editor
           .getDoc()
-          .replaceSelection("~~" + this.editor.getDoc().getSelection() + "~~");
+          .replaceSelection("~~" + (content ? content : this.editor.getDoc().getSelection()) + "~~");
         this.editor.focus();
         const cursorPos = this.editor.getCursor();
         this.editor.setCursor({ line: cursorPos.line, ch: cursorPos.ch - 2 });
       },
-      setUnderline() {
+      setUnderline(event, content) {
         if (this.preview) return;
         this.editor
           .getDoc()
-          .replaceSelection("__" + this.editor.getDoc().getSelection() + "__");
+          .replaceSelection("__" + (content ? content : this.editor.getDoc().getSelection()) + "__");
         this.editor.focus();
         const cursorPos = this.editor.getCursor();
         this.editor.setCursor({ line: cursorPos.line, ch: cursorPos.ch - 2 });
       },
-      setImage() {
+      setImage(event, content) {
         if (this.preview) return;
         this.editor
           .getDoc()
-          .replaceSelection("![](" + this.editor.getDoc().getSelection() + ")");
+          .replaceSelection("![](" + (content ? content : this.editor.getDoc().getSelection()) + ")");
         this.editor.focus();
         const cursorPos = this.editor.getCursor();
         this.editor.setCursor({ line: cursorPos.line, ch: cursorPos.ch - 1 });
       },
-      setListUl() {
+      setListUl(event, content) {
         if (this.preview) return;
         this.editor.focus();
         if (this.editor.getSelection().length == 0) {
@@ -251,9 +264,9 @@
         }
         this.editor
           .getDoc()
-          .replaceSelection("* " + this.editor.getDoc().getSelection());
+          .replaceSelection("* " + (content ? content : this.editor.getDoc().getSelection()));
       },
-      setListOl() {
+      setListOl(event, content) {
         if (this.preview) return;
         this.editor.focus();
         if (this.editor.getSelection().length == 0) {
@@ -262,9 +275,9 @@
         }
         this.editor
           .getDoc()
-          .replaceSelection("1. " + this.editor.getDoc().getSelection());
+          .replaceSelection("1. " + (content ? content : this.editor.getDoc().getSelection()));
       },
-      setQuotes() {
+      setQuotes(event, content) {
         if (this.preview) return;
         this.editor.focus();
         if (this.editor.getSelection().length == 0) {
@@ -273,7 +286,7 @@
         }
         this.editor
           .getDoc()
-          .replaceSelection("> " + this.editor.getDoc().getSelection());
+          .replaceSelection("> " + (content ? content : this.editor.getDoc().getSelection()));
       },
       togglePreview() {
         this.preview = !this.preview;

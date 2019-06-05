@@ -5,6 +5,6 @@
     "/js/admin.bundle.js": "/js/admin.bundle.js",
     "/js/home.bundle.js": "/js/home.bundle.js",
     "/js/login.bundle.js": "/js/login.bundle.js",
-    "/js/register.bundle.js": "/js/register.bundle.js",
-    "/js/vendors~about-me.bundle.js": "/js/vendors~about-me.bundle.js"
+    "/js/not-found.bundle.js": "/js/not-found.bundle.js",
+    "/js/register.bundle.js": "/js/register.bundle.js"
 }

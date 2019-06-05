@@ -4,7 +4,7 @@
       Accueil
     </h1>
     <p>
-      Bienvenu sur mon site.
+      Bienvenue sur mon site.
     </p>
   </div>
 </template>

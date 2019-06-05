@@ -1,6 +1,7 @@
 /* stylelint-disable selector-class-pattern, selector-no-qualifying-type  */
 
 .CodeMirror {
+
   pre.CodeMirror-line {
     margin-bottom: 0;
   }
@@ -47,10 +48,17 @@
 .mdeditor--editor {
   border: #dbdbdb 1px solid;
   border-radius: 0 6px 6px;
+
+  &.is-danger {
+    border-color: #ff3860;
+  }
 }
 
 .mdeditor--toolbar {
+
   .field.has-addons {
+    flex-wrap: wrap;
+
     .control .button {
       border-bottom: 0;
     }

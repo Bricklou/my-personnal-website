@@ -30,7 +30,25 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // Globals
     Route::post('globals/set/{key}', 'GlobalDataController@update')->middleware('isAdmin');
+
+    // Upload file
+    Route::post('files/upload/images', 'FileController@store')->middleware('isAdmin');
+    Route::post('files/delete/images', 'FileController@deleteImage')->middleware('isAdmin');
+    Route::get('files/get/images', 'FileController@fetchImages')->middleware('isAdmin');
+
+    // Projects
+    Route::post('projects/new', 'ProjectsController@new')->middleware('isAdmin');
+
+    // Project
+    Route::post('project/delete', 'ProjectsController@delete')->middleware('isAdmin');
+    Route::post('project/update', 'ProjectsController@update')->middleware('isAdmin');
 });
 
 // Globals
 Route::get('globals/get/{key}', 'GlobalDataController@index');
+
+// Projects
+Route::get('projects/get', 'ProjectsController@list');
+
+// Project
+Route::get('project/get', 'ProjectsController@info');

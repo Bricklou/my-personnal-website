@@ -14,7 +14,7 @@
       <div class="box column is-three-fifths is-offset-one-fifth">
         <div v-if="has_error && !success" class="notification is-danger">
           <p
-            v-if="error == 'registration_validation_error'"
+            v-if="validation_error"
           >
             Erreur(s) de validation, veuillez consulter le(s) message(s) ci-dessous.
           </p>
@@ -188,6 +188,7 @@
         password_confirmation: "",
         has_error: false,
         errors: {},
+        validation_error: false,
         success: false
       };
     },
@@ -214,10 +215,9 @@
             });
           },
           error: res => {
-            console.log(res.response.data.errors);
             app.has_error = true;
-            app.error = res.response.data.error;
             app.errors = res.response.data.errors || {};
+            app.validation_error = res.response.data.hasOwnProperty("errors");
           }
         });
       }

@@ -42,6 +42,62 @@ const router = new VueRouter({
       auth: undefined
     }
   },
+  {
+    path: "/my-projects",
+    name: "projects-list",
+    component: () =>
+                import ( /* webpackChunkNam: "projects-list" */ "./views/ProjectsList.vue"),
+    meta: {
+      auth: undefined
+    }
+  },
+  {
+    path: "/my-projects/:pageNumber",
+    component: () =>
+                import ( /* webpackChunkNam: "projects-list" */ "./views/ProjectsList.vue"),
+    meta: {
+      auth: undefined
+    }
+  },
+  {
+    path: "/new-project",
+    name: "new-project",
+    component: () =>
+                import ( /* webpackChunckName: "new-project" */ "./views/admin/NewProject.vue"),
+    meta: {
+      auth: {
+        roles: 2,
+        redirect: {
+          name: "login"
+        },
+        forbiddenRedirect: "/403"
+      }
+    }
+  },
+  {
+    path: "/project/:projectID",
+    name: "project",
+    component: () =>
+                import ( /* webpackChunckName: "project" */ "./views/ProjectView.vue"),
+    meta: {
+      auth: undefined
+    }
+  },
+  {
+    path: "/project/:projectID/edit",
+    name: "editProject",
+    component: () =>
+                import ( /* webpackChunckName: "editProject" */ "./views/admin/EditProject.vue"),
+    meta: {
+      auth: {
+        roles: 2,
+        redirect: {
+          name: "login"
+        },
+        forbiddenRedirect: "/403"
+      }
+    }
+  },
   // USER ROUTES
   {
     path: "/dashboard",
@@ -67,7 +123,16 @@ const router = new VueRouter({
         forbiddenRedirect: "/403"
       }
     }
-  }
+  },
+  {
+    path: "/404",
+    component: () =>
+                import ( /* webpackChunkName: "not-found" */ "./views/NotFound.vue"),
+  },
+  {
+    path: "*",
+    redirect: "/404"
+  },
   ]
 });
 

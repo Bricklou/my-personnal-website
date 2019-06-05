@@ -21,6 +21,12 @@ yarn install
 composer install
 ```
 
+Don't forgot to do the next command to be able to use the storage:
+
+```bash
+php artisan storage:link
+```
+
 ## Running the tests
 
 No tests availables for the moment.

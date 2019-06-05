@@ -96,7 +96,6 @@
             this.editorValue = this.data;
           })
           .catch(error => {
-            console.error(error.response);
             this.error = error.response.status;
           });
       },
@@ -125,6 +124,7 @@
 @import "../../sass/app";
 
 #about_me {
+
   #edit_about_btn {
     top: 15px;
     width: fit-content;

@@ -10,6 +10,7 @@ import Vue from "vue";
 import VueAuth from "@websanova/vue-auth";
 import VueAxios from "vue-axios";
 import VueShortkey from "vue-shortkey";
+import Notifications from "vue-notification";
 import router from "./router";
 import auth from "./utils/auth";
 import "./utils/markdownConverter";
@@ -19,6 +20,11 @@ import App from "./App.vue";
  * Adding shortcut support
  */
 Vue.use(VueShortkey);
+
+/**
+ * Adding notification support
+ */
+Vue.use(Notifications);
 
 /**
  * Set Vue Authentication

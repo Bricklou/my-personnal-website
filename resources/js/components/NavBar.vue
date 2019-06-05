@@ -30,6 +30,10 @@
           A propos
         </router-link>
 
+        <router-link :class="textClass" class="navbar-item" to="/my-projects">
+          Mes projects
+        </router-link>
+
         <router-link
           v-if="!$auth.check()"
           :class="textClass"
@@ -98,6 +102,7 @@
 @import "~bulma/bulma";
 
 .navbar {
+
   &.is-transparent {
     background-color: transparent !important;
   }
@@ -108,6 +113,7 @@
 }
 
 #navbarMobile {
+
   a:hover {
     background-color: rgba(255, 255, 255, 30%) !important;
   }

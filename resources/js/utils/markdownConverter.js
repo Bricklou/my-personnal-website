@@ -13,12 +13,18 @@ const classMap = {
   blockquote: "message message-body"
 };
 
-const bindings = Object.keys(classMap)
+let bindings = Object.keys(classMap)
   .map(key => ({
     type: "output",
     regex: new RegExp(`<${key}(.*)>`, "g"),
     replace: `<${key} class="${classMap[key]}" $1>`
   }));
+
+bindings.push({
+  type: "output",
+  regex: new RegExp("<img(.*)>", "g"),
+  replace: "<figure class=\"image\"><img $1/></figure>"
+});
 
 const converter = new showdown.Converter({
   noHeaderId: true,

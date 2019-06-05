@@ -18,7 +18,15 @@
             </div>
           </div>
         </section>
-        <transition mode="out-in" name="fade" />
+
+        <notifications group="notify" position="top right" class="vue-notification-handler">
+          <template slot="body" slot-scope="props">
+            <div class="notification" :class="'is-' + props.item.type">
+              <button class="delete is-small" @click="props.close" />
+              <p>{{ props.item.text }}</p>
+            </div>
+          </template>
+        </notifications>
       </div>
       <loading v-else id="loading" size="big" text="Bricklou's website" />
     </transition>
@@ -28,6 +36,7 @@
 <script>
   import NavBar from "./components/NavBar.vue";
   import Loading from "./components/Loading.vue";
+
   export default {
     name: "App",
     components: { NavBar, Loading },
@@ -38,6 +47,7 @@
         showDynNav: false
       };
     },
+
     mounted() {
       document.onreadystatechange = () => {
         if (document.readyState == "complete") {
@@ -62,6 +72,7 @@
   height: 100vh;
 
   #page {
+
     .hero-head {
       background: grey no-repeat fixed center/cover;
       height: 500px;
