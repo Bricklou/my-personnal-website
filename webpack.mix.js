@@ -1,5 +1,6 @@
 const mix = require("laravel-mix");
-require("@stakahashi/laravel-mix-stylelint");
+const StyleLintPlugin = require("stylelint-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 /*
  |--------------------------------------------------------------------------
@@ -20,19 +21,24 @@ mix.config.webpackConfig.output = {
 mix
   .js("resources/js/app.js", "public/js")
   .sass("resources/sass/app.scss", "public/css")
-  .stylelint({
-    configFile: ".stylelintrc",
-    context: "./resources",
-    failOnError: false,
-    files: ["**/*.scss"],
-    quiet: false,
-    syntax: "scss",
-    options: {
-      fix: true,
-      cache: true
-    }
-  })
   .webpackConfig({
+    plugins: [
+      new StyleLintPlugin({
+        configFile: ".stylelintrc",
+        context: "./resources",
+        failOnError: false,
+        files: ["**/*.scss"],
+        quiet: false,
+        syntax: "scss",
+        options: {
+          fix: true,
+          cache: true
+        }
+      }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: "static"
+      })
+    ],
     module: {
       rules: [{
         enforce: "pre",
@@ -43,17 +49,7 @@ mix
           fix: true,
           cache: true
         }
-      },
-      {
-        enforce: "pre",
-        test: /\.(s)css$/,
-        loader: "stylelint-loader",
-        options: {
-          fix: true,
-          cache: true
-        }
-      }
-      ]
+      }]
     }
   });
 
