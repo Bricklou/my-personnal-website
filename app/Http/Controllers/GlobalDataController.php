@@ -14,7 +14,7 @@ class GlobalDataController extends Controller
             return response()->json(
                 [
                     'status' => 'success',
-                    'value' => $data->value
+                    'value' => $data == null ? null : $data->value
                 ],
                 200
             );
