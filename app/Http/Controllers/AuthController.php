@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -93,12 +94,16 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        if ($token = $this->guard()->refresh()) {
-            return response()
-                ->json(['status' => 'successs'], 200)
-                ->header('Authorization', $token);
+        try {
+            if ($token = $this->guard()->refresh()) {
+                return response()
+                    ->json(['status' => 'successs'], 200)
+                    ->header('Authorization', $token);
+            }
+            return response()->json(['error' => 'refresh_token_error'], 401);
+        } catch (\Exception $exception) {
+            return response()->json(['error' => 'refresh_token_error'], 500);
         }
-        return response()->json(['error' => 'refresh_token_error'], 401);
     }
 
     private function guard()

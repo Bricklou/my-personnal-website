@@ -10,7 +10,7 @@ const router = new VueRouter({
     path: "/",
     name: "home",
     component: () =>
-                import ( /* webpackChunkName: "home" */ "./views/Home.vue"),
+      import ( /* webpackChunkName: "home" */ "./views/Home.vue"),
     meta: {
       auth: undefined
     }
@@ -19,7 +19,7 @@ const router = new VueRouter({
     path: "/register",
     name: "register",
     component: () =>
-                import ( /* webpackChunkName: "register" */ "./views/auth/Register.vue"),
+      import ( /* webpackChunkName: "register" */ "./views/auth/Register.vue"),
     meta: {
       auth: false
     }
@@ -28,7 +28,7 @@ const router = new VueRouter({
     path: "/login",
     name: "login",
     component: () =>
-                import ( /* webpackChunkName: "login" */ "./views/auth/Login.vue"),
+      import ( /* webpackChunkName: "login" */ "./views/auth/Login.vue"),
     meta: {
       auth: false
     }
@@ -37,7 +37,7 @@ const router = new VueRouter({
     path: "/about-me",
     name: "about-me",
     component: () =>
-                import ( /* webpackChunkName: "about-me" */ "./views/AboutMe.vue"),
+      import ( /* webpackChunkName: "about-me" */ "./views/AboutMe.vue"),
     meta: {
       auth: undefined
     }
@@ -46,7 +46,7 @@ const router = new VueRouter({
     path: "/my-projects",
     name: "projects-list",
     component: () =>
-                import ( /* webpackChunkNam: "projects-list" */ "./views/ProjectsList.vue"),
+      import ( /* webpackChunkNam: "projects-list" */ "./views/ProjectsList.vue"),
     meta: {
       auth: undefined
     }
@@ -54,7 +54,7 @@ const router = new VueRouter({
   {
     path: "/my-projects/:pageNumber",
     component: () =>
-                import ( /* webpackChunkNam: "projects-list" */ "./views/ProjectsList.vue"),
+      import ( /* webpackChunkNam: "projects-list" */ "./views/ProjectsList.vue"),
     meta: {
       auth: undefined
     }
@@ -63,7 +63,7 @@ const router = new VueRouter({
     path: "/new-project",
     name: "new-project",
     component: () =>
-                import ( /* webpackChunckName: "new-project" */ "./views/admin/NewProject.vue"),
+      import ( /* webpackChunckName: "new-project" */ "./views/admin/NewProject.vue"),
     meta: {
       auth: {
         roles: 2,
@@ -78,7 +78,7 @@ const router = new VueRouter({
     path: "/project/:projectID",
     name: "project",
     component: () =>
-                import ( /* webpackChunckName: "project" */ "./views/ProjectView.vue"),
+      import ( /* webpackChunckName: "project" */ "./views/ProjectView.vue"),
     meta: {
       auth: undefined
     }
@@ -87,7 +87,7 @@ const router = new VueRouter({
     path: "/project/:projectID/edit",
     name: "editProject",
     component: () =>
-                import ( /* webpackChunckName: "editProject" */ "./views/admin/EditProject.vue"),
+      import ( /* webpackChunckName: "editProject" */ "./views/admin/EditProject.vue"),
     meta: {
       auth: {
         roles: 2,
@@ -103,7 +103,7 @@ const router = new VueRouter({
     path: "/dashboard",
     name: "dashboard",
     component: () =>
-                import ( /* webpaclChunkName: "dashboard" */ "./views/user/Dashboard.vue"),
+      import ( /* webpaclChunkName: "dashboard" */ "./views/user/Dashboard.vue"),
     meta: {
       auth: true
     }
@@ -113,7 +113,7 @@ const router = new VueRouter({
     path: "/admin",
     name: "admin.dashboard",
     component: () =>
-                import ( /* webpackChunkName: "admin" */ "./views/admin/Dashboard.vue"),
+      import ( /* webpackChunkName: "admin" */ "./views/admin/Dashboard.vue"),
     meta: {
       auth: {
         roles: 2,
@@ -127,7 +127,7 @@ const router = new VueRouter({
   {
     path: "/404",
     component: () =>
-                import ( /* webpackChunkName: "not-found" */ "./views/NotFound.vue"),
+      import ( /* webpackChunkName: "not-found" */ "./views/NotFound.vue"),
   },
   {
     path: "*",

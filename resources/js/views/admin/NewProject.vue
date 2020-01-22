@@ -187,7 +187,7 @@
           .catch((res) => {
             this.has_error = true;
             this.errors = res.response.data.errors || {};
-            this.validation_error = res.response.data.hasOwnProperty("errors");
+            this.validation_error = res.response.data.errors;
 
             this.$notify({
               group: "notify",

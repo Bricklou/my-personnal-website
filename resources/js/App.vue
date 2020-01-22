@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition mode="out-in" name="fade">
-      <div v-if="$auth.ready() && ready" id="page">
+      <div v-if="ready" id="page">
         <nav-bar
           id="navbar"
           class="is-fixed-top box is-paddingless"
@@ -51,7 +51,22 @@
     mounted() {
       document.onreadystatechange = () => {
         if (document.readyState == "complete") {
-          this.ready = true;
+          if (this.$auth.token()) {
+            this.$auth.refresh({
+              success: () => {
+                this.ready = true;
+              },
+              error: () => {
+                this.ready = true;
+
+                this.$auth.logout({
+                  redirect: "/"
+                });
+              }
+            });
+          } else {
+            this.ready = true;
+          }
         }
       };
 

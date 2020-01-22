@@ -17,9 +17,7 @@ class ProjectsController extends Controller
             if(Auth::check() && Auth::user()->role === 2) {
                 $data = Projects::orderBy('published_date', 'desc')->paginate(3);
             } else {
-                Log::debug(Carbon::now());
-                $data = Projects::where('published', true)->where('published_date', '<=', Carbon::now())->orderBy('created_at', 'desc')->paginate(3);
-                Log::debug($data);
+                $data = Projects::where('published', true)->where('published_date', '<=', Carbon::now())->orderBy('published_date', 'desc')->paginate(5);
             }
 
             return response()->json(

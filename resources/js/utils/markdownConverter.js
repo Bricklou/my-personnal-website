@@ -23,7 +23,7 @@ let bindings = Object.keys(classMap)
 bindings.push({
   type: "output",
   regex: new RegExp("<img(.*)>", "g"),
-  replace: "<figure class=\"image\"><img $1/></figure>"
+  replace: "<figure class=\"image\"><img $1/><figcaption $2></figcaption></figure>"
 });
 
 const converter = new showdown.Converter({

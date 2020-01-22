@@ -35,9 +35,9 @@ mix
           cache: true
         }
       }),
-      new BundleAnalyzerPlugin({
+      /*new BundleAnalyzerPlugin({
         analyzerMode: "static"
-      })
+      })*/
     ],
     module: {
       rules: [{

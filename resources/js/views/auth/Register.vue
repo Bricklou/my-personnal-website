@@ -207,17 +207,12 @@
           },
           success: () => {
             app.success = true;
-            this.$router.push({
-              name: "login",
-              params: {
-                successRegistrationRedirect: true
-              }
-            });
           },
+          autoLogin: true,
           error: res => {
             app.has_error = true;
             app.errors = res.response.data.errors || {};
-            app.validation_error = res.response.data.hasOwnProperty("errors");
+            app.validation_error = res.response.data.errors;
           }
         });
       }
